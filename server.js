@@ -3,7 +3,12 @@ const cors    = require("cors");
 const fetch   = require("node-fetch");
 
 const app = express();
-app.use(cors({ origin: "*" }));
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+}));
+app.options("*", cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
