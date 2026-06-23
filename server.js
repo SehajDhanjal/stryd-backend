@@ -44,7 +44,7 @@ app.post("/api/coach", async (req, res) => {
       body: JSON.stringify({
         system_instruction: { parts: [{ text: systemText }] },
         contents: geminiMessages,
-        generationConfig: { maxOutputTokens: 500, temperature: 0.7 },
+        generationConfig: { maxOutputTokens: 1024, temperature: 0.7 },
       }),
     });
 
@@ -80,7 +80,7 @@ ${profile ? `Athlete goal: ${profile.goal?.label}` : ""}`;
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         contents: [{ role: "user", parts: [{ text: prompt }] }],
-        generationConfig: { maxOutputTokens: 200 },
+        generationConfig: { maxOutputTokens: 400 },
       }),
     });
 
